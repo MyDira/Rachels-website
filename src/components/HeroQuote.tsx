@@ -8,13 +8,51 @@ import { useRef } from "react";
  *
  *   DESIGN                     ART
  *     is a                      is a
- *   SOLUTION   QUESTION
+ *   SOLUTION           QUESTION
  *     to a                      to a
  *   PROBLEM             PROBLEM
  *                              — John Maeda
+ *
+ * Two-column CSS grid: everything in the left column shares a left edge,
+ * everything in the right column shares a right edge (so ART, QUESTION and
+ * PROBLEM all line up flush right, whatever the screen width). The reveal
+ * cascades down the left column first, then down the right column.
  */
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+// left column, top → bottom, then right column, top → bottom
+const D = {
+  designL: 0.2,
+  isaL: 0.5,
+  solution: 0.8,
+  toaL: 1.15,
+  problemL: 1.45,
+  art: 1.95,
+  isaR: 2.25,
+  question: 2.55,
+  toaR: 2.9,
+  problemR: 3.2,
+  maeda: 3.6,
+  cue: 4.1,
+};
+
+const big = "text-[clamp(1.8rem,7.2vw,6rem)] font-semibold tracking-tight";
+const huge =
+  "text-[clamp(1.55rem,8vw,7rem)] font-semibold tracking-tight text-slate-mid";
+const problem = "text-[clamp(1.6rem,6.6vw,5.5rem)] font-semibold tracking-tight";
+const small =
+  "text-[clamp(0.85rem,2.4vw,2.1rem)] font-light tracking-[0.18em] text-slate-mid";
+
+const sheen = (delay: number) => ({
+  backgroundImage:
+    "linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%), linear-gradient(#7e8f99, #7e8f99)",
+  backgroundSize: "250% 100%, 100% 100%",
+  WebkitBackgroundClip: "text" as const,
+  backgroundClip: "text" as const,
+  color: "transparent",
+  animation: `sheen 5s ease-in-out ${delay}s infinite`,
+});
 
 export default function HeroQuote() {
   const ref = useRef<HTMLDivElement>(null);
@@ -38,133 +76,107 @@ export default function HeroQuote() {
         style={{ opacity: fade, y: drift }}
         className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-28 sm:px-10"
       >
-        <div className="select-none leading-none text-slate-brand">
-          {/* Row 1 — DESIGN and ART slide toward each other */}
-          <div className="flex items-end justify-between">
-            <motion.span
-              initial={{ x: -110, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.0, delay: 0.15, ease }}
-              className="block text-[clamp(1.8rem,7.5vw,6.5rem)] font-semibold tracking-tight"
-            >
-              DESIGN
-            </motion.span>
-            <motion.span
-              initial={{ x: 110, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.0, delay: 0.15, ease }}
-              className="block text-[clamp(1.8rem,7.5vw,6.5rem)] font-semibold tracking-tight"
-            >
-              ART
-            </motion.span>
-          </div>
+        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-baseline gap-x-[3vw] gap-y-1 select-none leading-none text-slate-brand">
+          {/* Row 1 — DESIGN / ART */}
+          <motion.span
+            initial={{ x: -110, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.9, delay: D.designL, ease }}
+            className={`justify-self-start ${big}`}
+          >
+            DESIGN
+          </motion.span>
+          <motion.span
+            initial={{ x: 110, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.9, delay: D.art, ease }}
+            className={`justify-self-end ${big}`}
+          >
+            ART
+          </motion.span>
 
-          {/* Row 2 — the small “is a” lines */}
-          <div className="mt-1 flex items-baseline justify-between">
-            <motion.span
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.75, ease }}
-              className="ml-[6vw] block text-[clamp(0.85rem,2.4vw,2.1rem)] font-light tracking-[0.18em] text-slate-mid"
-            >
-              IS A
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.75, ease }}
-              className="block text-[clamp(0.85rem,2.4vw,2.1rem)] font-light tracking-[0.18em] text-slate-mid"
-            >
-              IS A
-            </motion.span>
-          </div>
+          {/* Row 2 — is a / is a */}
+          <motion.span
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: D.isaL, ease }}
+            className={`justify-self-start ml-[5vw] ${small}`}
+          >
+            IS A
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: D.isaR, ease }}
+            className={`justify-self-end ${small}`}
+          >
+            IS A
+          </motion.span>
 
-          {/* Row 3 — SOLUTION QUESTION, the giant shared line */}
-          <div className="mt-2 flex items-baseline justify-between gap-[3vw]">
-            <motion.span
-              initial={{ x: -160, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.1, delay: 1.15, ease }}
-              className="block text-[clamp(1.55rem,8.5vw,8rem)] font-semibold tracking-tight text-slate-mid"
-              style={{
-                backgroundImage:
-                  "linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%), linear-gradient(#7e8f99, #7e8f99)",
-                backgroundSize: "250% 100%, 100% 100%",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-                animation: "sheen 5s ease-in-out 2.6s infinite",
-              }}
-            >
-              SOLUTION
-            </motion.span>
-            <motion.span
-              initial={{ x: 160, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.1, delay: 1.15, ease }}
-              className="block text-[clamp(1.55rem,8.5vw,8rem)] font-semibold tracking-tight text-slate-mid"
-              style={{
-                backgroundImage:
-                  "linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%), linear-gradient(#7e8f99, #7e8f99)",
-                backgroundSize: "250% 100%, 100% 100%",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-                animation: "sheen 5s ease-in-out 3s infinite",
-              }}
-            >
-              QUESTION
-            </motion.span>
-          </div>
+          {/* Row 3 — SOLUTION / QUESTION (the giant shared line) */}
+          <motion.span
+            initial={{ x: -140, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.0, delay: D.solution, ease }}
+            className={`justify-self-start ${huge}`}
+            style={sheen(D.solution + 2.4)}
+          >
+            SOLUTION
+          </motion.span>
+          <motion.span
+            initial={{ x: 140, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.0, delay: D.question, ease }}
+            className={`justify-self-end ${huge}`}
+            style={sheen(D.question + 2.4)}
+          >
+            QUESTION
+          </motion.span>
 
-          {/* Row 4 — the small “to a” lines */}
-          <div className="mt-2 flex items-baseline justify-between">
-            <motion.span
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.8, ease }}
-              className="ml-[6vw] block text-[clamp(0.85rem,2.4vw,2.1rem)] font-light tracking-[0.18em] text-slate-mid"
-            >
-              TO A
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.8, ease }}
-              className="block text-[clamp(0.85rem,2.4vw,2.1rem)] font-light tracking-[0.18em] text-slate-mid"
-            >
-              TO A
-            </motion.span>
-          </div>
+          {/* Row 4 — to a / to a */}
+          <motion.span
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: D.toaL, ease }}
+            className={`justify-self-start ml-[5vw] ${small}`}
+          >
+            TO A
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: D.toaR, ease }}
+            className={`justify-self-end ${small}`}
+          >
+            TO A
+          </motion.span>
 
-          {/* Row 5 — PROBLEM PROBLEM rise up */}
-          <div className="mt-1 flex items-start justify-between">
+          {/* Row 5 — PROBLEM / PROBLEM + signature */}
+          <motion.span
+            initial={{ y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.9, delay: D.problemL, ease }}
+            className={`justify-self-start ${problem}`}
+          >
+            PROBLEM
+          </motion.span>
+          <div className="justify-self-end text-right">
             <motion.span
-              initial={{ y: 70, opacity: 0 }}
+              initial={{ y: 60, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1.0, delay: 2.15, ease }}
-              className="block text-[clamp(1.6rem,7vw,6rem)] font-semibold tracking-tight"
+              transition={{ duration: 0.9, delay: D.problemR, ease }}
+              className={`block ${problem}`}
             >
               PROBLEM
             </motion.span>
-            <div className="text-right">
-              <motion.span
-                initial={{ y: 70, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1.0, delay: 2.15, ease }}
-                className="block text-[clamp(1.6rem,7vw,6rem)] font-semibold tracking-tight"
-              >
-                PROBLEM
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1.2, delay: 2.9, ease }}
-                className="mt-3 block text-[clamp(0.95rem,1.6vw,1.35rem)] font-medium italic tracking-[0.14em] text-slate-brand"
-              >
-                John Maeda
-              </motion.span>
-            </div>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.0, delay: D.maeda, ease }}
+              className="mt-3 block text-[clamp(0.95rem,1.6vw,1.35rem)] font-medium italic tracking-[0.14em] text-slate-brand"
+            >
+              John Maeda
+            </motion.span>
           </div>
         </div>
       </motion.div>
@@ -173,7 +185,7 @@ export default function HeroQuote() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.4, duration: 1 }}
+        transition={{ delay: D.cue, duration: 1 }}
         style={{ opacity: fade }}
         className="absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
       >
