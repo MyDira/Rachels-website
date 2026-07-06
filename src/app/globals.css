@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  /* Design Glyph brand — sampled from Rachel's portfolio booklet */
+  --ice: #eaf5f9;
+  --ice-soft: #f3f9fc;
+  --slate-ink: #3d4f5a;
+  --slate: #4c5e68;
+  --slate-mid: #7e8f99;
+  --slate-light: #b9c9d2;
+  --paper: #ffffff;
+
+  --background: var(--ice-soft);
+  --foreground: var(--slate-ink);
+}
+
+@theme inline {
+  --color-ice: var(--ice);
+  --color-ice-soft: var(--ice-soft);
+  --color-slate-ink: var(--slate-ink);
+  --color-slate-brand: var(--slate);
+  --color-slate-mid: var(--slate-mid);
+  --color-slate-light: var(--slate-light);
+  --color-paper: var(--paper);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-jost);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jost), "Futura", "Century Gothic", sans-serif;
+}
+
+::selection {
+  background: var(--slate);
+  color: var(--ice);
+}
+
+/* Repeating DG glyph pattern, like the booklet backgrounds */
+.glyph-pattern {
+  background-image: url("/brand/glyph-tile.png");
+  background-size: 340px 340px;
+}
+
+.glyph-pattern-drift {
+  background-image: url("/brand/glyph-tile.png");
+  background-size: 340px 340px;
+  animation: glyph-drift 90s linear infinite;
+}
+
+@keyframes glyph-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 680px 340px;
+  }
+}
+
+/* Thin technical rule used across sections */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--slate-light) 20%,
+    var(--slate-light) 80%,
+    transparent
+  );
+}
+
+/* Wide-tracking caps label */
+.label-caps {
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+/* Soft elevated card */
+.card-soft {
+  background: var(--paper);
+  box-shadow:
+    0 1px 2px rgba(61, 79, 90, 0.06),
+    0 12px 32px -12px rgba(61, 79, 90, 0.18);
+}
+
+.card-soft:hover {
+  box-shadow:
+    0 1px 2px rgba(61, 79, 90, 0.08),
+    0 24px 48px -12px rgba(61, 79, 90, 0.28);
+}
+
+/* Scroll cue */
+@keyframes scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+.scroll-dot {
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+
+/* Shimmer sweep for the hero big words */
+@keyframes sheen {
+  0%,
+  55% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -20% 0;
+  }
+}
