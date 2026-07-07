@@ -37,7 +37,7 @@ export default async function PortfolioPage() {
       <section className="mx-auto max-w-7xl px-5 pb-28 pt-6 sm:px-8">
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} index={i} />
+            <ProjectCard key={p.slug} project={p} index={i} showIndex={false} />
           ))}
         </div>
       </section>

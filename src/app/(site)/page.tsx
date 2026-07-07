@@ -42,7 +42,7 @@ export default async function HomePage() {
 
         <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} index={i} />
+            <ProjectCard key={p.slug} project={p} index={i} showIndex={false} />
           ))}
         </div>
 
@@ -60,7 +60,7 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-white">
         <div className="glyph-pattern pointer-events-none absolute inset-0 opacity-60" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-24 sm:px-8 md:grid-cols-[auto_1fr]">
-          <Reveal className="mx-auto md:mx-0">
+          <Reveal className="mx-auto md:mx-0 md:ml-20 lg:ml-28">
             <Image
               src="/brand/dg-mark.png"
               alt="Design Glyph monogram"
@@ -69,7 +69,7 @@ export default async function HomePage() {
               className="h-44 w-auto md:h-56"
             />
           </Reveal>
-          <div>
+          <div className="flex justify-center">
             <Reveal delay={0.1}>
               <p className="label-caps text-[0.65rem] font-semibold text-slate-mid">
                 The designer
