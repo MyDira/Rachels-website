@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import { getAbout, getContact } from "@/lib/data";
+import { getAbout } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Me",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const [about, contact] = await Promise.all([getAbout(), getContact()]);
+  const about = await getAbout();
 
   return (
     <div>
@@ -26,21 +26,6 @@ export default async function AboutPage() {
               {about.heading}
             </h1>
           </Reveal>
-
-          {about.photo_url && (
-            <Reveal delay={0.1}>
-              <div className="card-soft relative mt-10 aspect-[16/10] w-full max-w-2xl overflow-hidden rounded-3xl sm:aspect-[2/1]">
-                <Image
-                  src={about.photo_url}
-                  alt="Rachel Panigel"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 768px"
-                  className="object-cover"
-                />
-              </div>
-            </Reveal>
-          )}
         </div>
       </section>
 
@@ -82,21 +67,36 @@ export default async function AboutPage() {
 
           <div className="flex flex-col gap-8">
             <Reveal delay={0.1}>
-              <div className="card-soft relative overflow-hidden rounded-2xl p-8">
-                <div className="glyph-pattern pointer-events-none absolute inset-0 opacity-50" />
-                <Image
-                  src="/brand/dg-mark.png"
-                  alt="Design Glyph monogram"
-                  width={120}
-                  height={150}
-                  className="relative mx-auto h-32 w-auto"
-                />
-                <p className="label-caps relative mt-6 text-center text-[0.6rem] font-semibold text-slate-brand">
-                  Design Glyph
-                </p>
-                <p className="relative mt-2 text-center text-sm font-normal text-slate-mid">
-                  Simplistic / Innovative / Expansive
-                </p>
+              <div className="card-soft relative overflow-hidden rounded-2xl">
+                {about.photo_url ? (
+                  <div className="relative aspect-[4/5] w-full">
+                    <Image
+                      src={about.photo_url}
+                      alt="Rachel Panigel"
+                      fill
+                      priority
+                      sizes="360px"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative p-8">
+                    <div className="glyph-pattern pointer-events-none absolute inset-0 opacity-50" />
+                    <Image
+                      src="/brand/dg-mark.png"
+                      alt="Design Glyph monogram"
+                      width={120}
+                      height={150}
+                      className="relative mx-auto h-32 w-auto"
+                    />
+                    <p className="label-caps relative mt-6 text-center text-[0.6rem] font-semibold text-slate-brand">
+                      Design Glyph
+                    </p>
+                    <p className="relative mt-2 text-center text-sm font-normal text-slate-mid">
+                      Simplistic / Innovative / Expansive
+                    </p>
+                  </div>
+                )}
               </div>
             </Reveal>
 
@@ -115,29 +115,6 @@ export default async function AboutPage() {
                     </span>
                   ))}
                 </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.3}>
-              <div className="card-soft rounded-2xl p-8">
-                <p className="label-caps text-[0.65rem] font-semibold text-slate-mid">
-                  Contact
-                </p>
-                <a
-                  href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}
-                  className="mt-4 block font-normal text-slate-ink transition hover:text-slate-brand"
-                >
-                  {contact.phone}
-                </a>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="mt-1 block break-all font-normal text-slate-ink transition hover:text-slate-brand"
-                >
-                  {contact.email}
-                </a>
-                <p className="mt-1 font-normal text-slate-mid">
-                  {contact.location}
-                </p>
               </div>
             </Reveal>
           </div>

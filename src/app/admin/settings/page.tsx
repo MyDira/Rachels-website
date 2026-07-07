@@ -102,13 +102,15 @@ export default function AdminSettingsPage() {
               />
             </div>
             <div>
-              <label className={labelClass}>Photo (shown under the quote)</label>
+              <label className={labelClass}>
+                Photo (replaces the Design Glyph card on About Me)
+              </label>
               {about.photo_url && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={about.photo_url}
                   alt=""
-                  className="mb-3 aspect-[2/1] w-full rounded-xl object-cover"
+                  className="mb-3 aspect-[4/5] w-40 rounded-xl object-cover"
                 />
               )}
               <div className="flex items-center gap-3">
