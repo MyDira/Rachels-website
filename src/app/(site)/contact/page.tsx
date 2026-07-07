@@ -60,15 +60,6 @@ export default async function ContactPage() {
                   {contact.email}
                 </a>
               </div>
-              <div className="card-soft relative overflow-hidden rounded-2xl bg-slate-brand p-8">
-                <div className="glyph-pattern pointer-events-none absolute inset-0 opacity-40 invert" />
-                <p className="label-caps relative text-[0.6rem] font-semibold text-slate-light">
-                  Design Glyph Studio
-                </p>
-                <p className="relative mt-2 text-xl font-normal text-white">
-                  {contact.location}
-                </p>
-              </div>
             </div>
           </Reveal>
         </div>
