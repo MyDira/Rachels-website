@@ -91,25 +91,33 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
-        <Reveal>
-          <div className="card-soft relative overflow-hidden rounded-3xl bg-slate-brand px-8 py-16 text-center sm:px-16">
-            <div className="glyph-pattern pointer-events-none absolute inset-0 opacity-40 invert" />
-            <p className="label-caps relative text-[0.65rem] font-semibold text-slate-light">
+      {/* Contact CTA — blends into the page background */}
+      <section className="relative overflow-hidden">
+        <div className="glyph-pattern pointer-events-none absolute inset-0 opacity-50" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_center,rgba(255,255,255,0.6),transparent_70%)]" />
+        <div className="relative mx-auto max-w-3xl px-5 py-28 text-center sm:px-8">
+          <Reveal>
+            <div className="flex items-center justify-center gap-4">
+              <span className="h-px w-10 bg-gradient-to-r from-transparent to-slate-light" />
+              <span className="label-caps text-[0.6rem] font-semibold text-slate-mid">
+                Let&apos;s work together
+              </span>
+              <span className="h-px w-10 bg-gradient-to-l from-transparent to-slate-light" />
+            </div>
+            <h2 className="mx-auto mt-7 max-w-2xl text-2xl font-medium tracking-tight text-slate-brand sm:text-3xl">
               Have a problem worth solving?
-            </p>
-            <h2 className="relative mx-auto mt-4 max-w-2xl text-3xl font-medium tracking-wide text-white sm:text-4xl">
-              Let&apos;s design the solution together.
             </h2>
             <Link
               href="/contact"
-              className="label-caps relative mt-9 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[0.65rem] font-semibold text-slate-brand transition-transform hover:scale-105"
+              className="group label-caps mt-10 inline-flex items-center gap-3 rounded-full bg-slate-brand px-8 py-4 text-[0.65rem] font-semibold text-white shadow-[0_10px_30px_-12px_rgba(61,79,90,0.5)] transition-all hover:bg-slate-ink hover:shadow-[0_14px_36px_-10px_rgba(61,79,90,0.6)]"
             >
-              Get in touch →
+              Get in touch
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </Link>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
     </>
   );
