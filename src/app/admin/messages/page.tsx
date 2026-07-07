@@ -51,10 +51,10 @@ export default function AdminMessagesPage() {
         </div>
       )}
       {messages === null ? (
-        <p className="font-light text-slate-mid">Loading…</p>
+        <p className="font-normal text-slate-mid">Loading…</p>
       ) : messages.length === 0 ? (
         !dbError && (
-          <p className="font-light text-slate-mid">
+          <p className="font-normal text-slate-mid">
             No messages yet — when someone fills out the contact form, it lands
             here.
           </p>
@@ -78,12 +78,12 @@ export default function AdminMessagesPage() {
                   </p>
                   <a
                     href={`mailto:${m.email}`}
-                    className="text-sm font-light text-slate-mid hover:text-slate-brand"
+                    className="text-sm font-normal text-slate-mid hover:text-slate-brand"
                   >
                     {m.email}
                   </a>
                 </div>
-                <span className="text-xs font-light text-slate-mid">
+                <span className="text-xs font-normal text-slate-mid">
                   {new Date(m.created_at).toLocaleString()}
                 </span>
               </div>
@@ -92,7 +92,7 @@ export default function AdminMessagesPage() {
                   {m.subject}
                 </p>
               )}
-              <p className="mt-2 whitespace-pre-wrap font-light leading-relaxed text-slate-mid">
+              <p className="mt-2 whitespace-pre-wrap font-normal leading-relaxed text-slate-mid">
                 {m.message}
               </p>
               <div className="mt-4 flex gap-2">

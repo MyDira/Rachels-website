@@ -54,7 +54,7 @@ export default function AdminShell({
                     (l.href !== "/admin" && pathname.startsWith(l.href)) ||
                     (l.href === "/admin" && pathname.startsWith("/admin/projects"))
                       ? "font-medium text-slate-ink"
-                      : "font-light text-slate-mid hover:text-slate-ink"
+                      : "font-normal text-slate-mid hover:text-slate-ink"
                   }`}
                 >
                   {l.label}
@@ -66,13 +66,13 @@ export default function AdminShell({
             <Link
               href="/"
               target="_blank"
-              className="text-sm font-light text-slate-mid transition hover:text-slate-ink"
+              className="text-sm font-normal text-slate-mid transition hover:text-slate-ink"
             >
               View site ↗
             </Link>
             <button
               onClick={signOut}
-              className="rounded-full border border-slate-light px-4 py-1.5 text-xs font-light text-slate-mid transition hover:border-slate-brand hover:text-slate-ink"
+              className="rounded-full border border-slate-light px-4 py-1.5 text-xs font-normal text-slate-mid transition hover:border-slate-brand hover:text-slate-ink"
             >
               Sign out
             </button>

@@ -24,7 +24,7 @@ export default async function PortfolioPage() {
             <h1 className="mt-3 max-w-3xl text-4xl font-medium tracking-wide text-slate-ink sm:text-5xl">
               Every brand tells a story.
             </h1>
-            <p className="mt-5 max-w-xl text-lg font-light leading-relaxed text-slate-mid">
+            <p className="mt-5 max-w-xl text-lg font-normal leading-relaxed text-slate-mid">
               Complete identities designed from the ground up — logos,
               packaging, editorial, patterns, type and more. Click into any
               brand to see the full story.

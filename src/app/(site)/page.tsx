@@ -77,7 +77,7 @@ export default async function HomePage() {
               <h2 className="mt-3 max-w-xl text-3xl font-medium tracking-wide text-slate-ink sm:text-4xl">
                 Every project deserves a special something.
               </h2>
-              <p className="mt-5 max-w-xl text-lg font-light leading-relaxed text-slate-mid">
+              <p className="mt-5 max-w-xl text-lg font-normal leading-relaxed text-slate-mid">
                 {about.intro}
               </p>
               <Link

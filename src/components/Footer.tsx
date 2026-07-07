@@ -21,13 +21,13 @@ export default async function Footer() {
             />
             <div>
               <p className="label-caps text-xs font-medium">Design Glyph</p>
-              <p className="mt-1 text-sm font-light text-slate-light">
+              <p className="mt-1 text-sm font-normal text-slate-light">
                 Design is a solution to a problem.
               </p>
             </div>
           </div>
 
-          <nav className="grid grid-cols-2 gap-x-16 gap-y-3 text-sm font-light">
+          <nav className="grid grid-cols-2 gap-x-16 gap-y-3 text-sm font-normal">
             <Link href="/" className="text-slate-light transition hover:text-white">
               Home
             </Link>
@@ -38,20 +38,20 @@ export default async function Footer() {
               Portfolio
             </Link>
             <Link
-              href="/contact"
-              className="text-slate-light transition hover:text-white"
-            >
-              Contact
-            </Link>
-            <Link
               href="/about"
               className="text-slate-light transition hover:text-white"
             >
               About Me
             </Link>
+            <Link
+              href="/contact"
+              className="text-slate-light transition hover:text-white"
+            >
+              Let&apos;s Connect
+            </Link>
           </nav>
 
-          <div className="text-sm font-light text-slate-light">
+          <div className="text-sm font-normal text-slate-light">
             <p className="label-caps mb-3 text-[0.65rem] text-white/70">
               Get in touch
             </p>
@@ -70,7 +70,7 @@ export default async function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-6 text-xs font-light text-slate-light">
+        <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-6 text-xs font-normal text-slate-light">
           <p>© {year} Rachel Panigel · Design Glyph</p>
           <p className="label-caps text-[0.6rem]">Brooklyn, NY</p>
         </div>

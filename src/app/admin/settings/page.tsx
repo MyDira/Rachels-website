@@ -7,7 +7,7 @@ import { seedAbout, seedContact } from "@/lib/seed-data";
 import type { AboutContent, ContactContent } from "@/lib/types";
 
 const inputClass =
-  "w-full rounded-xl border border-slate-light bg-white px-4 py-2.5 font-light text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15 transition";
+  "w-full rounded-xl border border-slate-light bg-white px-4 py-2.5 font-normal text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15 transition";
 
 const labelClass =
   "label-caps mb-1.5 block text-[0.58rem] font-semibold text-slate-mid";
@@ -66,7 +66,7 @@ export default function AdminSettingsPage() {
         </div>
       )}
       {loading ? (
-        <p className="font-light text-slate-mid">Loading…</p>
+        <p className="font-normal text-slate-mid">Loading…</p>
       ) : (
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="card-soft flex flex-col gap-5 rounded-2xl p-7">

@@ -90,10 +90,10 @@ export default function AdminProjectsPage() {
       </div>
 
       {projects === null ? (
-        <p className="font-light text-slate-mid">Loading…</p>
+        <p className="font-normal text-slate-mid">Loading…</p>
       ) : projects.length === 0 ? (
         !dbError && (
-          <p className="font-light text-slate-mid">
+          <p className="font-normal text-slate-mid">
             No projects yet — create one or import the starter set.
           </p>
         )
@@ -118,11 +118,11 @@ export default function AdminProjectsPage() {
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium text-slate-ink">
                   {p.title}
-                  <span className="ml-3 text-xs font-light text-slate-mid">
+                  <span className="ml-3 text-xs font-normal text-slate-mid">
                     /{p.slug}
                   </span>
                 </p>
-                <p className="truncate text-sm font-light text-slate-mid">
+                <p className="truncate text-sm font-normal text-slate-mid">
                   {p.tagline}
                 </p>
               </div>

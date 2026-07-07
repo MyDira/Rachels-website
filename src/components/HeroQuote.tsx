@@ -42,7 +42,7 @@ const huge =
   "text-[clamp(1.55rem,8vw,7rem)] font-semibold tracking-tight text-slate-mid";
 const problem = "text-[clamp(1.6rem,6.6vw,5.5rem)] font-semibold tracking-tight";
 const small =
-  "text-[clamp(0.85rem,2.4vw,2.1rem)] font-light tracking-[0.18em] text-slate-mid";
+  "text-[clamp(0.85rem,2.4vw,2.1rem)] font-normal tracking-[0.18em] text-slate-mid";
 
 const sheen = (delay: number) => ({
   backgroundImage:
@@ -74,7 +74,7 @@ export default function HeroQuote() {
 
       <motion.div
         style={{ opacity: fade, y: drift }}
-        className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-28 sm:px-10"
+        className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-32 sm:px-8"
       >
         <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-baseline gap-x-[3vw] gap-y-1 select-none leading-none text-slate-brand">
           {/* Row 1 — DESIGN / ART */}

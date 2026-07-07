@@ -9,8 +9,8 @@ import { AnimatePresence, motion } from "framer-motion";
 const links = [
   { href: "/", label: "Home" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/contact", label: "Contact" },
   { href: "/about", label: "About Me" },
+  { href: "/contact", label: "Let's Connect" },
 ];
 
 export default function Nav() {
@@ -40,29 +40,29 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
-        <Link href="/" className="group flex items-center gap-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+        <Link href="/" className="group flex items-center gap-3.5">
           <Image
             src="/brand/dg-mark.png"
             alt="Design Glyph logo"
-            width={40}
-            height={50}
+            width={52}
+            height={65}
             priority
-            className="h-10 w-auto transition-transform duration-500 group-hover:rotate-[8deg]"
+            className="h-14 w-auto transition-transform duration-500 group-hover:rotate-[8deg]"
           />
-          <span className="label-caps hidden text-[0.7rem] font-medium text-slate-brand sm:block">
+          <span className="label-caps hidden text-[0.82rem] font-semibold text-slate-brand sm:block">
             Design
-            <span className="ml-2 text-slate-mid">Glyph</span>
+            <span className="ml-2 font-medium text-slate-mid">Glyph</span>
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-10 md:flex">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`label-caps relative pb-1 text-[0.68rem] font-medium transition-colors ${
+              className={`label-caps relative pb-1 text-[0.82rem] font-semibold transition-colors ${
                 isActive(l.href)
                   ? "text-slate-ink"
                   : "text-slate-mid hover:text-slate-ink"
@@ -111,7 +111,7 @@ export default function Nav() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={`label-caps py-3 text-xs ${
+                  className={`label-caps py-3 text-sm font-semibold ${
                     isActive(l.href) ? "text-slate-ink" : "text-slate-mid"
                   }`}
                 >

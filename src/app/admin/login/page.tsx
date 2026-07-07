@@ -57,7 +57,7 @@ export default function AdminLoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            className="w-full rounded-xl border border-slate-light bg-white px-4 py-3 font-light text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15"
+            className="w-full rounded-xl border border-slate-light bg-white px-4 py-3 font-normal text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15"
           />
           <input
             type="password"
@@ -65,7 +65,7 @@ export default function AdminLoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-full rounded-xl border border-slate-light bg-white px-4 py-3 font-light text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15"
+            className="w-full rounded-xl border border-slate-light bg-white px-4 py-3 font-normal text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15"
           />
           {error && (
             <p className="rounded-lg bg-red-50 px-4 py-2.5 text-sm text-red-700">

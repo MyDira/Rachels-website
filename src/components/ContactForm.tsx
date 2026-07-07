@@ -7,7 +7,7 @@ import { sendMessage, type ContactFormState } from "@/app/(site)/contact/actions
 const initialState: ContactFormState = { status: "idle", message: "" };
 
 const inputClass =
-  "w-full rounded-xl border border-slate-light bg-white px-4 py-3 font-light text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15 transition";
+  "w-full rounded-xl border border-slate-light bg-white px-4 py-3 font-normal text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15 transition";
 
 export default function ContactForm() {
   const [state, formAction, pending] = useActionState(sendMessage, initialState);
@@ -25,7 +25,7 @@ export default function ContactForm() {
         <h3 className="mt-6 text-2xl font-medium text-slate-ink">
           Message sent
         </h3>
-        <p className="mt-2 max-w-sm font-light text-slate-mid">{state.message}</p>
+        <p className="mt-2 max-w-sm font-normal text-slate-mid">{state.message}</p>
       </motion.div>
     );
   }

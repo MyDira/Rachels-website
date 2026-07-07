@@ -9,7 +9,7 @@ import type { Project, ProjectImage } from "@/lib/types";
 type EditableImage = Pick<ProjectImage, "url" | "caption"> & { id?: string };
 
 const inputClass =
-  "w-full rounded-xl border border-slate-light bg-white px-4 py-2.5 font-light text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15 transition";
+  "w-full rounded-xl border border-slate-light bg-white px-4 py-2.5 font-normal text-slate-ink placeholder:text-slate-light focus:border-slate-brand focus:outline-none focus:ring-2 focus:ring-slate-brand/15 transition";
 
 const labelClass =
   "label-caps mb-1.5 block text-[0.58rem] font-semibold text-slate-mid";
@@ -202,7 +202,7 @@ export default function ProjectForm({ projectId }: { projectId?: string }) {
   if (loading) {
     return (
       <AdminShell title={isNew ? "New project" : "Edit project"}>
-        <p className="font-light text-slate-mid">Loading…</p>
+        <p className="font-normal text-slate-mid">Loading…</p>
       </AdminShell>
     );
   }
@@ -355,7 +355,7 @@ export default function ProjectForm({ projectId }: { projectId?: string }) {
                   </div>
                 </div>
               ))}
-              <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-slate-light py-4 text-sm font-light text-slate-mid transition hover:border-slate-brand hover:text-slate-brand">
+              <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-slate-light py-4 text-sm font-normal text-slate-mid transition hover:border-slate-brand hover:text-slate-brand">
                 + Upload images
                 <input
                   type="file"
@@ -388,7 +388,7 @@ export default function ProjectForm({ projectId }: { projectId?: string }) {
                 onChange={(e) => setCoverUrl(e.target.value)}
                 placeholder="/portfolio/covers/…  or upload ↓"
               />
-              <label className="mt-2 block cursor-pointer rounded-xl border border-dashed border-slate-light py-2.5 text-center text-xs font-light text-slate-mid transition hover:border-slate-brand hover:text-slate-brand">
+              <label className="mt-2 block cursor-pointer rounded-xl border border-dashed border-slate-light py-2.5 text-center text-xs font-normal text-slate-mid transition hover:border-slate-brand hover:text-slate-brand">
                 Upload cover
                 <input
                   type="file"
@@ -414,7 +414,7 @@ export default function ProjectForm({ projectId }: { projectId?: string }) {
                 onChange={(e) => setLogoUrl(e.target.value)}
                 placeholder="/portfolio/logos/…  or upload ↓"
               />
-              <label className="mt-2 block cursor-pointer rounded-xl border border-dashed border-slate-light py-2.5 text-center text-xs font-light text-slate-mid transition hover:border-slate-brand hover:text-slate-brand">
+              <label className="mt-2 block cursor-pointer rounded-xl border border-dashed border-slate-light py-2.5 text-center text-xs font-normal text-slate-mid transition hover:border-slate-brand hover:text-slate-brand">
                 Upload logo
                 <input
                   type="file"
@@ -425,7 +425,7 @@ export default function ProjectForm({ projectId }: { projectId?: string }) {
               </label>
             </div>
             <div className="flex items-center justify-between">
-              <label className="flex cursor-pointer items-center gap-3 text-sm font-light text-slate-ink">
+              <label className="flex cursor-pointer items-center gap-3 text-sm font-normal text-slate-ink">
                 <input
                   type="checkbox"
                   checked={featured}

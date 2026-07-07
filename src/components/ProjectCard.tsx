@@ -45,7 +45,7 @@ export default function ProjectCard({
               {project.title}
             </h3>
             {project.tagline && (
-              <p className="mt-0.5 text-sm font-light text-slate-mid">
+              <p className="mt-0.5 text-sm font-normal text-slate-mid">
                 {project.tagline}
               </p>
             )}
