@@ -30,39 +30,10 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-28 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_340px]">
-          <Reveal>
-            <ContactForm />
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <div className="flex flex-col gap-6">
-              <div className="card-soft rounded-2xl p-8">
-                <p className="label-caps text-[0.6rem] font-semibold text-slate-mid">
-                  Phone
-                </p>
-                <a
-                  href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}
-                  className="mt-2 block text-xl font-normal text-slate-ink transition hover:text-slate-brand"
-                >
-                  {contact.phone}
-                </a>
-              </div>
-              <div className="card-soft rounded-2xl p-8">
-                <p className="label-caps text-[0.6rem] font-semibold text-slate-mid">
-                  Email
-                </p>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="mt-2 block break-all text-xl font-normal text-slate-ink transition hover:text-slate-brand"
-                >
-                  {contact.email}
-                </a>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+      <section className="mx-auto max-w-3xl px-5 pb-28 sm:px-8">
+        <Reveal>
+          <ContactForm />
+        </Reveal>
       </section>
     </div>
   );
