@@ -30,8 +30,8 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-5 pb-28 sm:px-8">
-        <Reveal>
+      <section className="mx-auto max-w-7xl px-5 pb-28 sm:px-8">
+        <Reveal className="max-w-xl">
           <ContactForm />
         </Reveal>
       </section>
