@@ -19,6 +19,7 @@ export default function AdminSettingsPage() {
   const [dbError, setDbError] = useState<string | null>(null);
   const [savedMsg, setSavedMsg] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -39,6 +40,27 @@ export default function AdminSettingsPage() {
       setLoading(false);
     })();
   }, []);
+
+  const uploadPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingPhoto(true);
+    const supabase = createClient();
+    const path = `about-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
+    const { error } = await supabase.storage.from("portfolio").upload(path, file);
+    if (error) {
+      alert(
+        `Upload failed: ${error.message}. (Does the "portfolio" storage bucket exist?)`
+      );
+      setUploadingPhoto(false);
+      e.target.value = "";
+      return;
+    }
+    const { data } = supabase.storage.from("portfolio").getPublicUrl(path);
+    setAbout((prev) => ({ ...prev, photo_url: data.publicUrl }));
+    setUploadingPhoto(false);
+    e.target.value = "";
+  };
 
   const save = async () => {
     setBusy(true);
@@ -78,6 +100,42 @@ export default function AdminSettingsPage() {
                 value={about.heading}
                 onChange={(e) => setAbout({ ...about, heading: e.target.value })}
               />
+            </div>
+            <div>
+              <label className={labelClass}>Photo (shown under the quote)</label>
+              {about.photo_url && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={about.photo_url}
+                  alt=""
+                  className="mb-3 aspect-[2/1] w-full rounded-xl object-cover"
+                />
+              )}
+              <div className="flex items-center gap-3">
+                <label className="flex-1 cursor-pointer rounded-xl border border-dashed border-slate-light py-2.5 text-center text-xs font-normal text-slate-mid transition hover:border-slate-brand hover:text-slate-brand">
+                  {uploadingPhoto
+                    ? "Uploading…"
+                    : about.photo_url
+                      ? "Replace photo"
+                      : "Upload photo"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    disabled={uploadingPhoto}
+                    onChange={uploadPhoto}
+                  />
+                </label>
+                {about.photo_url && (
+                  <button
+                    type="button"
+                    onClick={() => setAbout({ ...about, photo_url: null })}
+                    className="label-caps rounded-full border border-red-200 px-4 py-2.5 text-[0.55rem] font-semibold text-red-500 transition hover:bg-red-50"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
             </div>
             <div>
               <label className={labelClass}>Intro paragraph</label>

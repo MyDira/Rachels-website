@@ -26,6 +26,21 @@ export default async function AboutPage() {
               {about.heading}
             </h1>
           </Reveal>
+
+          {about.photo_url && (
+            <Reveal delay={0.1}>
+              <div className="card-soft relative mt-10 aspect-[16/10] w-full max-w-2xl overflow-hidden rounded-3xl sm:aspect-[2/1]">
+                <Image
+                  src={about.photo_url}
+                  alt="Rachel Panigel"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 

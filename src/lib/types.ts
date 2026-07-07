@@ -14,6 +14,7 @@ export type Project = {
   description: string | null;
   brand_font: string | null;
   attributes: string[];
+  work_type: string[];
   palette: string[];
   logo_url: string | null;
   cover_url: string | null;
@@ -28,6 +29,7 @@ export type AboutContent = {
   body: string;
   skills: string[];
   education: string;
+  photo_url: string | null;
 };
 
 export type ContactContent = {

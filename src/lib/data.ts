@@ -22,8 +22,17 @@ export async function getProjects(): Promise<Project[]> {
       .select("*, images:project_images(*)")
       .order("sort_order", { ascending: true });
     if (error || !data || data.length === 0) return seedProjects;
+    const seedBySlug = Object.fromEntries(
+      seedProjects.map((p) => [p.slug, p])
+    );
     return data.map((p) => ({
       ...p,
+      // The DB has no work_type column yet — fall back to the built-in
+      // catalog by slug so project pages show the type of work.
+      work_type:
+        p.work_type && p.work_type.length > 0
+          ? p.work_type
+          : seedBySlug[p.slug]?.work_type ?? [],
       images: (p.images ?? []).sort(
         (a: { sort_order: number }, b: { sort_order: number }) =>
           a.sort_order - b.sort_order

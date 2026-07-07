@@ -45,17 +45,8 @@ export default async function ProjectPage({
             </Link>
           </Reveal>
 
-          <div className="mt-8 grid items-end gap-10 md:grid-cols-[1fr_auto]">
+          <div className="mt-8 grid items-end gap-8 md:grid-cols-[1fr_auto]">
             <Reveal delay={0.05}>
-              {project.logo_url && (
-                <Image
-                  src={project.logo_url}
-                  alt={`${project.title} logo`}
-                  width={220}
-                  height={120}
-                  className="mb-7 h-16 w-auto object-contain sm:h-20"
-                />
-              )}
               <h1 className="text-4xl font-medium tracking-wide text-slate-ink sm:text-6xl">
                 {project.title}
               </h1>
@@ -66,39 +57,23 @@ export default async function ProjectPage({
               )}
             </Reveal>
 
-            <Reveal delay={0.15} className="flex flex-col gap-5 md:items-end">
-              {project.attributes.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {project.attributes.map((a) => (
+            {project.work_type.length > 0 && (
+              <Reveal delay={0.15} className="flex flex-col gap-3 md:items-end">
+                <span className="label-caps text-[0.55rem] font-semibold text-slate-mid">
+                  Type of work
+                </span>
+                <div className="flex flex-wrap gap-2 md:justify-end">
+                  {project.work_type.map((w) => (
                     <span
-                      key={a}
+                      key={w}
                       className="label-caps rounded-full border border-slate-light bg-white/70 px-4 py-1.5 text-[0.55rem] font-semibold text-slate-brand"
                     >
-                      {a}
+                      {w}
                     </span>
                   ))}
                 </div>
-              )}
-              <div className="flex items-center gap-4">
-                {project.brand_font && (
-                  <span className="text-sm font-normal text-slate-mid">
-                    Typeface — {project.brand_font}
-                  </span>
-                )}
-                {project.palette.length > 0 && (
-                  <span className="flex gap-1.5">
-                    {project.palette.map((c) => (
-                      <span
-                        key={c}
-                        title={c}
-                        className="h-5 w-5 rounded-md border border-black/10"
-                        style={{ backgroundColor: c }}
-                      />
-                    ))}
-                  </span>
-                )}
-              </div>
-            </Reveal>
+              </Reveal>
+            )}
           </div>
 
           {project.description && (
