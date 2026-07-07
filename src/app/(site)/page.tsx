@@ -42,7 +42,7 @@ export default async function HomePage() {
 
         <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} index={i} />
+            <ProjectCard key={p.slug} project={p} index={i} showIndex={false} />
           ))}
         </div>
 

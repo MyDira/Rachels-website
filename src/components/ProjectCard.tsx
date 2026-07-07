@@ -8,9 +8,11 @@ import type { Project } from "@/lib/types";
 export default function ProjectCard({
   project,
   index,
+  showIndex = true,
 }: {
   project: Project;
   index: number;
+  showIndex?: boolean;
 }) {
   return (
     <motion.div
@@ -34,9 +36,11 @@ export default function ProjectCard({
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-ink/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          <span className="label-caps absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-[0.55rem] font-semibold text-slate-brand backdrop-blur-sm">
-            {String(index + 1).padStart(2, "0")}
-          </span>
+          {showIndex && (
+            <span className="label-caps absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-[0.55rem] font-semibold text-slate-brand backdrop-blur-sm">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          )}
         </div>
 
         <div className="flex items-center justify-between px-5 py-4">
