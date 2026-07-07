@@ -60,7 +60,7 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-white">
         <div className="glyph-pattern pointer-events-none absolute inset-0 opacity-60" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-24 sm:px-8 md:grid-cols-[auto_1fr]">
-          <Reveal className="mx-auto md:mx-0 md:ml-8 lg:ml-12">
+          <Reveal className="mx-auto md:mx-0 md:ml-20 lg:ml-28">
             <Image
               src="/brand/dg-mark.png"
               alt="Design Glyph monogram"
