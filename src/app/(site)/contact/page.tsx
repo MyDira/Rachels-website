@@ -23,7 +23,7 @@ export default async function ContactPage() {
             <h1 className="mt-3 max-w-3xl text-4xl font-medium tracking-wide text-slate-ink sm:text-5xl">
               Let&apos;s make something special.
             </h1>
-            <p className="mt-5 max-w-xl text-lg font-light leading-relaxed text-slate-mid">
+            <p className="mt-5 max-w-xl text-lg font-normal leading-relaxed text-slate-mid">
               {contact.blurb}
             </p>
           </Reveal>
@@ -44,7 +44,7 @@ export default async function ContactPage() {
                 </p>
                 <a
                   href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}
-                  className="mt-2 block text-xl font-light text-slate-ink transition hover:text-slate-brand"
+                  className="mt-2 block text-xl font-normal text-slate-ink transition hover:text-slate-brand"
                 >
                   {contact.phone}
                 </a>
@@ -55,7 +55,7 @@ export default async function ContactPage() {
                 </p>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="mt-2 block break-all text-xl font-light text-slate-ink transition hover:text-slate-brand"
+                  className="mt-2 block break-all text-xl font-normal text-slate-ink transition hover:text-slate-brand"
                 >
                   {contact.email}
                 </a>
@@ -65,7 +65,7 @@ export default async function ContactPage() {
                 <p className="label-caps relative text-[0.6rem] font-semibold text-slate-light">
                   Studio
                 </p>
-                <p className="relative mt-2 text-xl font-light text-white">
+                <p className="relative mt-2 text-xl font-normal text-white">
                   {contact.location}
                 </p>
               </div>

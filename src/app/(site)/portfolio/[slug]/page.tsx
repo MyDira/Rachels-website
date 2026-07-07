@@ -60,7 +60,7 @@ export default async function ProjectPage({
                 {project.title}
               </h1>
               {project.tagline && (
-                <p className="mt-3 text-xl font-light text-slate-mid">
+                <p className="mt-3 text-xl font-normal text-slate-mid">
                   {project.tagline}
                 </p>
               )}
@@ -81,7 +81,7 @@ export default async function ProjectPage({
               )}
               <div className="flex items-center gap-4">
                 {project.brand_font && (
-                  <span className="text-sm font-light text-slate-mid">
+                  <span className="text-sm font-normal text-slate-mid">
                     Typeface — {project.brand_font}
                   </span>
                 )}
@@ -103,7 +103,7 @@ export default async function ProjectPage({
 
           {project.description && (
             <Reveal delay={0.2}>
-              <p className="mt-9 max-w-3xl text-lg font-light leading-relaxed text-slate-mid">
+              <p className="mt-9 max-w-3xl text-lg font-normal leading-relaxed text-slate-mid">
                 {project.description}
               </p>
             </Reveal>
@@ -129,7 +129,7 @@ export default async function ProjectPage({
                 />
                 {im.caption && (
                   <figcaption className="flex items-center justify-between px-6 py-4">
-                    <span className="text-sm font-light text-slate-mid">
+                    <span className="text-sm font-normal text-slate-mid">
                       {im.caption}
                     </span>
                     <span className="label-caps text-[0.55rem] font-semibold text-slate-light">

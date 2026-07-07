@@ -33,12 +33,12 @@ export default async function AboutPage() {
         <div className="grid gap-14 lg:grid-cols-[1fr_360px]">
           <div>
             <Reveal>
-              <p className="text-xl font-light leading-relaxed text-slate-ink">
+              <p className="text-xl font-normal leading-relaxed text-slate-ink">
                 {about.intro}
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="mt-8 space-y-6 text-lg font-light leading-relaxed text-slate-mid">
+              <div className="mt-8 space-y-6 text-lg font-normal leading-relaxed text-slate-mid">
                 {about.body.split("\n\n").map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
@@ -50,7 +50,7 @@ export default async function AboutPage() {
               <p className="label-caps text-[0.65rem] font-semibold text-slate-mid">
                 Education
               </p>
-              <p className="mt-3 text-lg font-light text-slate-ink">
+              <p className="mt-3 text-lg font-normal text-slate-ink">
                 {about.education}
               </p>
             </Reveal>
@@ -79,7 +79,7 @@ export default async function AboutPage() {
                 <p className="label-caps relative mt-6 text-center text-[0.6rem] font-semibold text-slate-brand">
                   Design Glyph
                 </p>
-                <p className="relative mt-2 text-center text-sm font-light text-slate-mid">
+                <p className="relative mt-2 text-center text-sm font-normal text-slate-mid">
                   Simplistic / Innovative / Expansive
                 </p>
               </div>
@@ -94,7 +94,7 @@ export default async function AboutPage() {
                   {about.skills.map((s) => (
                     <span
                       key={s}
-                      className="rounded-full border border-slate-light px-3.5 py-1.5 text-xs font-light text-slate-brand"
+                      className="rounded-full border border-slate-light px-3.5 py-1.5 text-xs font-normal text-slate-brand"
                     >
                       {s}
                     </span>
@@ -110,17 +110,17 @@ export default async function AboutPage() {
                 </p>
                 <a
                   href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}
-                  className="mt-4 block font-light text-slate-ink transition hover:text-slate-brand"
+                  className="mt-4 block font-normal text-slate-ink transition hover:text-slate-brand"
                 >
                   {contact.phone}
                 </a>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="mt-1 block break-all font-light text-slate-ink transition hover:text-slate-brand"
+                  className="mt-1 block break-all font-normal text-slate-ink transition hover:text-slate-brand"
                 >
                   {contact.email}
                 </a>
-                <p className="mt-1 font-light text-slate-mid">
+                <p className="mt-1 font-normal text-slate-mid">
                   {contact.location}
                 </p>
               </div>
